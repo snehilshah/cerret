@@ -1,7 +1,6 @@
 package analyzer
 
 import (
-	"fmt"
 	"go/ast"
 
 	"golang.org/x/tools/go/analysis"
@@ -51,8 +50,6 @@ func run(pass *analysis.Pass) (any, error) {
 		if len(secondParamNames) != 1 || secondParamNames[0].Name != "in" {
 			return
 		}
-
-		fmt.Println("Confirmed RPC", funcDecl.Name)
 
 		if funcDecl.Body == nil {
 			return

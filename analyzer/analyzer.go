@@ -9,7 +9,7 @@ import (
 )
 
 var Analyzer = &analysis.Analyzer{
-	Name:     "Erret",
+	Name:     "cerret",
 	Doc:      "Find leaking internal errors in your rpc",
 	Run:      run,
 	Requires: []*analysis.Analyzer{inspect.Analyzer},

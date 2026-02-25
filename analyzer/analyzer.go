@@ -56,6 +56,10 @@ func run(pass *analysis.Pass) (any, error) {
 		}
 
 		ast.Inspect(funcDecl.Body, func(n ast.Node) bool {
+			if _, ok := n.(*ast.FuncLit); ok {
+				return false
+			}
+
 			retStmt, ok := n.(*ast.ReturnStmt)
 			if !ok {
 				return true

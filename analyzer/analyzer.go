@@ -57,6 +57,22 @@ func run(pass *analysis.Pass) (any, error) {
 		if funcDecl.Body == nil {
 			return
 		}
+
+		ast.Inspect(funcDecl.Body, func(n ast.Node) bool {
+			retStmt, ok := n.(*ast.ReturnStmt)
+			if !ok {
+				return true
+			}
+			if retStmt.Results == nil {
+				return true
+			}
+			for _, result := range retStmt.Results {
+				if errIdent, ok := result.(*ast.Ident); ok && errIdent.Name == "err" {
+					pass.Reportf(result.Pos(), "Leaking internal error in RPC: %s", funcDecl.Name.Name)
+				}
+			}
+			return true
+		})
 	})
 
 	return nil, nil

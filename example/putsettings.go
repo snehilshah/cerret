@@ -14,5 +14,6 @@ func (p person) PutSettings(ctx context.Context, in string) (string, error) {
 	if rand.Int()%2 == 0 {
 		return "false", errors.New("Even Number")
 	}
-	return "ok", nil
+	err := errors.New("Some Internal Error")
+	return "ok", err
 }

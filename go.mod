@@ -1,4 +1,4 @@
-module github.com/snehilshah/erret
+module github.com/snehilshah/cerret
 
 go 1.25.0
 

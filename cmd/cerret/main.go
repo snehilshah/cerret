@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/snehilshah/erret/analyzer"
+	"github.com/snehilshah/cerret/analyzer"
 	"golang.org/x/tools/go/analysis/singlechecker"
 )
 
